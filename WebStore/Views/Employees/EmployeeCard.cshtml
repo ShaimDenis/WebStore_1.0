@@ -1,8 +1,13 @@
-﻿<h3>Сотрудник №@Model.Id</h3>
-<p>@Model.SurName</p>
-<p>@Model.FirstName</p>
-<p>@Model.Patronymic</p>
-<p>@Model.Age</p>
-<hr />
-<a href="~/Home/Employees">Сотрудники</a>
+﻿@{ 
+    ViewBag.Title = "Сотрудник #" + Model.Id;
+}
 
+<div class=" container">
+    <h3>Сотрудник №@Model.Id</h3>
+    <p>@Model.SurName</p>
+    <p>@Model.FirstName</p>
+    <p>@Model.Patronymic</p>
+    <p>@Model.Age</p>
+    <hr><hr />
+    <a asp-controller="Employees" asp-action="EmployeesList">Сотрудники</a>
+</div>
