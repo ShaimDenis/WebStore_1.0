@@ -21,6 +21,8 @@
     <meta charset="UTF-8">
     <!-- Site Title -->
     <title>@ViewBag.Title | Karma Shop</title>
+
+    @await  RenderSectionAsync("Styles", false)
     <!--
         CSS
         ============================================= -->
@@ -35,10 +37,12 @@
     <!-- End Header Area -->
     @RenderBody();
     <!-- start footer Area -->
-   <partial name="Partial/_Footer" />
+    <partial name="Partial/_Footer" />
     <!-- End footer Area -->
 
     <partial name="Partial/_Scripts" />
+
+    @await RenderSectionAsync("Scripts", false)
 </body>
 
 </html>
