@@ -29,8 +29,10 @@ namespace WebStore
             services.AddSingleton<IProductData, InMemoryProductData>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
+            var emp = serviceProvider.GetService<IEmployeesData>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
