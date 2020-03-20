@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebStore.ViewModels.SectionViewModel>
+
+    <div class="sidebar-categories">
+        <div class="head">Browse Categories</div>
+        <ul class="main-categories">
+            @foreach (var parent_section in Model)
+            {
+                if (parent_section.ChildSections.Count > 0)
+                {
+                    <li class="main-nav-list">
+                        <a data-toggle="collapse" href="#@parent_section.Name fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable">
+                            <span class="lnr lnr-arrow-right">
+                            </span>
+                            @parent_section.Name
+                            <span class="number">
+                            (53)
+                            </span>
+                        </a>
+                        <ul class="collapse" id="@parent_section.Name" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+                            @foreach (var child_section in parent_section.ChildSections)
+                            {
+                                <li class="main-nav-list child">
+                                    <a asp-controller="Catalog" asp-action="Shop" asp-route-SectionId="@child_section.Id">
+                                        @child_section.Name
+                                        <span class="number">
+                                            (13)
+                                        </span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="main-nav-list">
+                        <a asp-controller="Catalog" asp-action="Shop"  asp-route-SectionId="@parent_section.Id">
+                            @parent_section.Name
+                            <span class="number">
+                                (24)
+                            </span>
+                        </a>
+                    </li>
+                }
+            }
+
+
+
+
+        </ul>
+    </div>
